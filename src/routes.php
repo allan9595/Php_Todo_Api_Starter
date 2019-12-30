@@ -66,7 +66,7 @@ $app->group('/api/v1/todos', function() use($app) {
 
         //add a subtasks
         $app->post('', function ($request, $response, $args) {
-            $this->task->getTask($args['id']);
+            $this->task->getTask($args['task_id']); //check if the primart task exist
             $data = $request->getParsedBody();
             $data['taskId'] = $args['task_id']; //assign the id to the data['id']
             $result = $this->subtask->addSubtaskByTaskId($data);
