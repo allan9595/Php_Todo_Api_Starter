@@ -60,11 +60,11 @@ class SubTask {
         if($pdo->rowCount()<1){
             throw new ApiException(ApiException::SUBTASK_CREATION_FAILED,400);
         }
-        return $this->getSubtaskByTaskId($this->database->lastInsertId());
+        return $this->getSubTaskByTaskId($this->database->lastInsertId());
     }
 
     //update one task
-    public function updateSubtaskByTaskId($data){
+    public function updateSubTaskByTaskId($data){
         if(!isset($data['taskId']) || !isset($data['task']) || !isset($data['status'])){
             throw new ApiException(ApiException::TASK_INFO_REQUIRED,400);
         }
@@ -82,7 +82,7 @@ class SubTask {
         if($pdo->rowCount()<1){
             throw new ApiException(ApiException::SUBTASK_UPDATE_FAILED,400);
         }
-        return $this->getSubtaskByTaskId($taskId);
+        return $this->getSubTaskByTaskId($taskId);
     }
 
      //delete one task
