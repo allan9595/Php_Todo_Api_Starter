@@ -54,13 +54,13 @@ $app->group('/api/v1/todos', function() use($app) {
     $app->group('/{task_id}/subtasks', function() use($app) {
         //get all subtasks
         $app->get('', function ($request, $response, $args) {
-            $result = $this->subtask->getReviewsByTaskId($args['task_id']);
+            $result = $this->subtask->getSubtasksByTaskId($args['task_id']);
             return $response->withJson($result, 200, JSON_PRETTY_PRINT);
         });
  
         //get a subtasks
         $app->get('/{subtask_id}', function ($request, $response, $args) {
-            $result = $this->subtask->getReviewByTaskId($args['subtask_id']);
+            $result = $this->subtask->getSubtaskByTaskId($args['subtask_id']);
             return $response->withJson($result, 200, JSON_PRETTY_PRINT);
         });
 
@@ -68,7 +68,7 @@ $app->group('/api/v1/todos', function() use($app) {
         $app->post('', function ($request, $response, $args) {
             $data = $request->getParsedBody();
             $data['taskId'] = $args['task_id']; //assign the id to the data['id']
-            $result = $this->subtask->addReviewByTaskId($data);
+            $result = $this->subtask->addSubtaskByTaskId($data);
             return $response->withJson($result, 201, JSON_PRETTY_PRINT);
         });
 
@@ -76,13 +76,13 @@ $app->group('/api/v1/todos', function() use($app) {
         $app->put('/{subtask_id}', function ($request, $response, $args) {
             $data = $request->getParsedBody();
             $data['taskId'] = $args['subtask_id']; //assign the id to the data['id']
-            $result = $this->subtask->updateReviewByTaskId($data);
+            $result = $this->subtask->updateSubtaskByTaskId($data);
             return $response->withJson($result, 200, JSON_PRETTY_PRINT);
         });
 
         //delete subtask
         $app->delete('/{subtask_id}', function ($request, $response, $args) {
-            $result = $this->subtask->deleteReviewBySubTaskId($args['subtask_id']);
+            $result = $this->subtask->deleteSubtaskBySubTaskId($args['subtask_id']);
             return $response->withJson($result, 200, JSON_PRETTY_PRINT);
         });
     });

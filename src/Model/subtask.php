@@ -10,7 +10,7 @@ class SubTask {
     }
 
     //retrieve task
-    public function getReviewsByTaskId($taskId){
+    public function getSubTasksByTaskId($taskId){
         $taskId = filter_var($taskId, FILTER_SANITIZE_NUMBER_INT);
         $sql = '
             SELECT * FROM subtasks WHERE task_id = ? ORDER BY id ;
@@ -26,7 +26,7 @@ class SubTask {
     }
 
     //retrieve one task only
-    public function getReviewByTaskId($id){
+    public function getSubTaskByTaskId($id){
         $taskId = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
         $sql = '
             SELECT * FROM subtasks WHERE id = ?;
@@ -42,7 +42,7 @@ class SubTask {
     }
 
     //create one task
-    public function addReviewByTaskId($data){
+    public function addSubTaskByTaskId($data){
         if(empty($data['status']) || empty($data['name'])){
             throw new ApiException(ApiException::SUBTASK_INFO_REQUIRED,400);
         }
@@ -60,11 +60,11 @@ class SubTask {
         if($pdo->rowCount()<1){
             throw new ApiException(ApiException::SUBTASK_CREATION_FAILED,400);
         }
-        return $this->getReviewByTaskId($this->database->lastInsertId());
+        return $this->getSubtaskByTaskId($this->database->lastInsertId());
     }
 
     //update one task
-    public function updateReviewByTaskId($data){
+    public function updateSubtaskByTaskId($data){
         if(empty($data['taskId']) || empty($data['task']) || empty($data['status'])){
             throw new ApiException(ApiException::TASK_INFO_REQUIRED,400);
         }
@@ -82,11 +82,11 @@ class SubTask {
         if($pdo->rowCount()<1){
             throw new ApiException(ApiException::SUBTASK_UPDATE_FAILED,400);
         }
-        return $this->getReviewByTaskId($taskId);
+        return $this->getSubtaskByTaskId($taskId);
     }
 
      //delete one task
-     public function deleteReviewBySubTaskId($id){
+     public function deleteSubtaskBySubTaskId($id){
         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
         $this->getReviewByTaskId($id);
         $sql = '

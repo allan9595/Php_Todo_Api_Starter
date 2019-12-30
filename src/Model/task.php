@@ -84,6 +84,7 @@ class Task {
 
      //delete one task
      public function deleteTask($taskId){
+        $this->database->exec( 'PRAGMA foreign_keys = ON;' );
         $taskId = filter_var($taskId, FILTER_SANITIZE_NUMBER_INT);
         $this->getTask($taskId);
         $sql = '
