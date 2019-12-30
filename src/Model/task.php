@@ -42,7 +42,7 @@ class Task {
 
     //create one task
     public function addTask($data){
-        if(empty($data['task']) || empty($data['status'])){
+        if(!isset($data['task']) || !isset($data['status'])){
             throw new ApiException(ApiException::TASK_INFO_REQUIRED,400);
         }
         $task = filter_var($data['task'], FILTER_SANITIZE_STRING);
@@ -62,7 +62,7 @@ class Task {
 
     //update one task
     public function updateTask($data){
-        if(empty($data['id']) || empty($data['task']) || empty($data['status'])){
+        if(!isset($data['id']) || !isset($data['task']) || !isset($data['status'])){
             throw new ApiException(ApiException::TASK_INFO_REQUIRED,400);
         }
         $task = filter_var($data['task'], FILTER_SANITIZE_STRING);
