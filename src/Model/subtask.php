@@ -65,7 +65,7 @@ class SubTask {
 
     //update one task
     public function updateSubTaskByTaskId($data){
-        if(!isset($data['taskId']) || !isset($data['task']) || !isset($data['status'])){
+        if(!isset($data['taskId']) || !isset($data['name']) || !isset($data['status'])){
             throw new ApiException(ApiException::TASK_INFO_REQUIRED,400);
         }
         $task = filter_var($data['name'], FILTER_SANITIZE_STRING);
