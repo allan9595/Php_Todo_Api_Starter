@@ -43,7 +43,7 @@ class SubTask {
 
     //create one task
     public function addSubTaskByTaskId($data){
-        if(!isset($data['status']) || !isset($data['name'])){
+        if(!isset($data['status']) || empty($data['name'])){
             throw new ApiException(ApiException::SUBTASK_INFO_REQUIRED,400);
         }
         $task = filter_var($data['name'], FILTER_SANITIZE_STRING);
@@ -65,7 +65,7 @@ class SubTask {
 
     //update one task
     public function updateSubTaskByTaskId($data){
-        if(!isset($data['taskId']) || !isset($data['name']) || !isset($data['status'])){
+        if(!isset($data['taskId']) || empty($data['name']) || !isset($data['status'])){
             throw new ApiException(ApiException::TASK_INFO_REQUIRED,400);
         }
         $task = filter_var($data['name'], FILTER_SANITIZE_STRING);
