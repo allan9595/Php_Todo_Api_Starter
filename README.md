@@ -4,7 +4,7 @@
 
 **Todo Api** 
 
-The listings_test demonstrates my ability to use Slim 3 to create API endpoints for the application. 
+The Todo Api demonstrates my ability to use Slim 3 to create API endpoints for the application. 
 
 Note: 
 
