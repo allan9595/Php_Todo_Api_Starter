@@ -88,7 +88,7 @@ class SubTask {
      //delete one task
      public function deleteSubtaskBySubTaskId($id){
         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
-        $this->getReviewByTaskId($id);
+        $this->getSubtaskByTaskId($id);
         $sql = '
             DELETE FROM subtasks WHERE id = ?; 
         ';
